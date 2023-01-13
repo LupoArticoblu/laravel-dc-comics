@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', FumettoController::class, 'index')->name('home');
+Route::get('/', [FumettoController::class, 'index'])->name('home');
 
 Route::resource('fumetti', FumettoController::class);
