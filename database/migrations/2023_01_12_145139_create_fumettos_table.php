@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('fumettos', function (Blueprint $table) {
             $table->string('title');
+            $table->id();
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->string('thumb')->nullable();

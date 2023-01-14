@@ -17,11 +17,11 @@
       @forelse ($fumetti as $fumetto)
       
         <tr>
-          <th>{{$fumetto->slug}}</th>
+          <th>{{$fumetto->id}}</th>
           <th>{{$fumetto->title}}</th>
           <th>{{$fumetto->price}}</th>
           <th>{{$fumetto->type}}</th>
-          <th></th>
+          <th><a href="{{route('fumetti.show')}}" class="btn btn-danger">SHOW</a></th>
           
         </tr>
       @empty

@@ -25,7 +25,7 @@ class FumettoController extends Controller
      */
     public function create()
     {
-        //
+        return view('fumetti.create');
     }
 
     /**
@@ -45,9 +45,11 @@ class FumettoController extends Controller
      * @param  \App\Models\Fumetto  $fumetto
      * @return \Illuminate\Http\Response
      */
-    public function show(Fumetto $fumetto)
+    public function show($id)
     {
-        //
+        $fumetto = Fumetto::findOrFail($id);
+
+        return view('fumetti.show', compact('fumetto'));
     }
 
     /**
