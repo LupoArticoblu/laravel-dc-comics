@@ -36,6 +36,27 @@ class FumettoController extends Controller
      */
     public function store(Request $request)
     {
+        /* Validazione */
+
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'thumb' => 'required',
+            'price' => 'required',
+            'series' => 'required',
+            'sale_date' => 'required',
+            'type' => 'required',
+        ],
+        [
+            'title.required' => 'inserire un titolo valido',
+            'description.required' => 'inserire una didascalia',
+            'thumb.required' => 'inserire un URL immagine',
+            'price.required' => 'inserire un prezzo',
+            'series.required' => 'inserire ALBO',
+            'sale_date.required' => 'inserire data',
+            'type.required' => 'inserire una tipologia di articolo',
+        ]);
+
         $form_data = $request->all();
 
         $new_fumetto = new Fumetto();
@@ -110,6 +131,6 @@ class FumettoController extends Controller
     {
         $fumetto->delete();
 
-        return redirect()->route('fumetti.index')->with('DELETED', "$fumetto->title eliminato correttamente");
+        return redirect()->route('fumetti.index')->with('deleted', "$fumetto->title eliminato correttamente");
     }
 }
