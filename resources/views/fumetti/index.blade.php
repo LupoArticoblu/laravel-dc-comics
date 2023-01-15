@@ -21,7 +21,7 @@
           <th>{{$fumetto->title}}</th>
           <th>{{$fumetto->price}}</th>
           <th>{{$fumetto->type}}</th>
-          <th><a href="{{route('fumetti.show')}}" class="btn btn-danger">SHOW</a></th>
+          <th><a href="{{route('fumetti.show', $fumetto)}}" class="btn btn-danger">SHOW</a></th>
           
         </tr>
       @empty

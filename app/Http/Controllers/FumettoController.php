@@ -36,7 +36,20 @@ class FumettoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+
+        $new_fumetto = new Fumetto();
+        $new_fumetto->title = $form_data['title'];
+        $new_fumetto->slug = Fumetto::generateSlug($new_fumetto->title);
+        $new_fumetto->description = $form_data['description'];
+        $new_fumetto->thumb = $form_data['thumb'];
+        $new_fumetto->price = $form_data['price'];
+        $new_fumetto->series = $form_data['series'];
+        $new_fumetto->sale_date = $form_data['sale_date'];
+        $new_fumetto->type = $form_data['type'];
+        $new_fumetto->save();
+
+
     }
 
     /**

@@ -1,5 +1,5 @@
 <footer>
   <div class="container">
-    <a class="btn btn-primary">Inserisci Fumetto</a>
+    <a href="{{route('fumetti.create')}}" class="btn btn-primary">Inserisci Fumetto</a>
   </div>
 </footer>

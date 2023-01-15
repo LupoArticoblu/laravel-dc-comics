@@ -29,6 +29,9 @@ class FumettoTableSeeder extends Seeder
             $new_fumetto->sale_date = $fumetti_detail['sale_date'];
             $new_fumetto->type = $fumetti_detail['type'];
             $new_fumetto->save();
+
+            return redirect()->route('fumetti.show', $new_fumetto);
+
         }
     }
 }
