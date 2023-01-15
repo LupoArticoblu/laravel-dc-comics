@@ -21,7 +21,15 @@
           <th>{{$fumetto->title}}</th>
           <th>{{$fumetto->price}}</th>
           <th>{{$fumetto->type}}</th>
-          <th><a href="{{route('fumetti.show', $fumetto)}}" class="btn btn-danger">SHOW</a></th>
+          <th><a href="{{route('fumetti.show', $fumetto)}}" class="btn btn-danger">SHOW</a>
+          <th><a href="{{route('fumetti.edit', $fumetto)}}" class="btn btn-warning">MODIFICA</a> 
+          <th>
+            <form onsubmit="return confirm('eliminare {{$fumetto->title}} ?')" class='d-inline' action="{{route('fumetti.destroy', $fumetto)}}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn btn-secondary" title="delete">ELIMINA</button>
+            </form>
+          </th>
           
         </tr>
       @empty

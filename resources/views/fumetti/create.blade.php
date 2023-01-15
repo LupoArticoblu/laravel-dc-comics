@@ -1,7 +1,9 @@
 @extends('layouts.home')
 
 @section('content')
-  <h2>Inserimento Nuovo</h2>
+  <h2>Inserimento Nuovo
+    <th><a href="{{route('fumetti.edit', $fumetto)}}" class="btn btn-warning">MODIFICA</a>
+  </h2>
   <form action="{{route('fumetti.store')}}" method="POST">
     @csrf
     <div class="container">
