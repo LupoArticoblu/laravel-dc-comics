@@ -38,24 +38,26 @@ class FumettoController extends Controller
     {
         /* Validazione */
 
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'thumb' => 'required',
-            'price' => 'required',
-            'series' => 'required',
-            'sale_date' => 'required',
-            'type' => 'required',
-        ],
-        [
-            'title.required' => 'inserire un titolo valido',
-            'description.required' => 'inserire una didascalia',
-            'thumb.required' => 'inserire un URL immagine',
-            'price.required' => 'inserire un prezzo',
-            'series.required' => 'inserire ALBO',
-            'sale_date.required' => 'inserire data',
-            'type.required' => 'inserire una tipologia di articolo',
-        ]);
+        $request->validate(
+            [
+                'title' => 'required',
+                'description' => 'required',
+                'thumb' => 'required',
+                'price' => 'required',
+                'series' => 'required',
+                'sale_date' => 'required',
+                'type' => 'required',
+            ],
+            [
+                'title.required' => 'inserire un titolo valido',
+                'description.required' => 'inserire una didascalia',
+                'thumb.required' => 'inserire un URL immagine',
+                'price.required' => 'inserire un prezzo',
+                'series.required' => 'inserire ALBO',
+                'sale_date.required' => 'inserire data',
+                'type.required' => 'inserire una tipologia di articolo',
+            ]
+        );
 
         $form_data = $request->all();
 
@@ -71,8 +73,6 @@ class FumettoController extends Controller
         $form_data['slug'] = Fumetto::generateSlug($form_data['title']);
         $new_fumetto->fill($form_data);
         $new_fumetto->save();
-
-
     }
 
     /**
@@ -94,9 +94,10 @@ class FumettoController extends Controller
      * @param  \App\Models\Fumetto  $fumetto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fumetto $fumetto)
+    public function edit(Fumetto $fumetti)
     {
-        return view('fumetto.edit', compact('fumetto'));
+
+        return view('fumetti.edit', compact('fumetti'));
     }
 
     /**
@@ -106,19 +107,20 @@ class FumettoController extends Controller
      * @param  \App\Models\Fumetto  $fumetto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fumetto $fumetto)
+    public function update(Request $request, Fumetto $fumetti)
     {
+
         $form_data = $request->all();
 
-        if($form_data['title'] != $fumetto->title){
+        if ($form_data['title'] != $fumetti->title) {
             $form_data['slug'] = Fumetto::generateSlug($form_data['title']);
-        }else{
-            $form_data['slug'] = $fumetto->slug;
+        } else {
+            $form_data['slug'] = $fumetti->slug;
         }
 
-        $fumetto->update($form_data);
+        $fumetti->update($form_data);
 
-        return redirect()->route('fumetti.show', $fumetto);
+        return redirect()->route('fumetti.show', $fumetti);
     }
 
     /**
@@ -127,10 +129,10 @@ class FumettoController extends Controller
      * @param  \App\Models\Fumetto  $fumetto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fumetto $fumetto)
+    public function destroy(Fumetto $fumetti)
     {
-        $fumetto->delete();
+        $fumetti->delete();
 
-        return redirect()->route('fumetti.index')->with('deleted', "$fumetto->title eliminato correttamente");
+        return redirect()->route('fumetti.index')->with('deleted', "$fumetti->title eliminato correttamente");
     }
 }

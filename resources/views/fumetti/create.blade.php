@@ -2,7 +2,7 @@
 
 @section('content')
   <h2>Inserimento Nuovo
-    <th><a href="{{route('fumetti.edit', $fumetto)}}" class="btn btn-warning">MODIFICA</a>
+    
   </h2>
 
   @if ($errors->any()){
@@ -27,9 +27,9 @@
         <input value="{{old('title')}}" type="text" class="form-control @error('title')
           is-invalid
         @enderror" id="title" name="title" placeholder="Inserire titolo">
-        <div class="invalid-feedback">
+        {{-- <div class="invalid-feedback">
           {{$message}}
-        </div>
+        </div> --}}
       </div>
       <div class="mb-3">
         <label for="image" class="form-label">Url img</label>
@@ -42,36 +42,36 @@
         <input value="{{old('price')}}" type="text" class="form-control @error('title')
         is-invalid
         @enderror" id="price" name="price" placeholder="Inserire prezzo">
-        <div class="invalid-feedback">
+        {{-- <div class="invalid-feedback">
           {{$message}}
-        </div>
+        </div> --}}
       </div>
       <div class="mb-3">
         <label for="series" class="form-label">Albo</label>
         <input value="{{old('series')}}" type="text" class="form-control @error('title')
         is-invalid
         @enderror" id="series" name="series" placeholder="Inserire albo della storia">
-        <div class="invalid-feedback">
+        {{-- <div class="invalid-feedback">
           {{$message}}
-        </div>
+        </div> --}}
       </div>
       <div class="mb-3">
         <label for="sale_date" class="form-label">Data</label>
         <input value="{{old('sale_date')}}" type="text" class="form-control @error('title')
         is-invalid
         @enderror" id="sale_date" name="sale_date" placeholder="Inserire data di uscita">
-        <div class="invalid-feedback">
+        {{-- <div class="invalid-feedback">
           {{$message}}
-        </div>
+        </div> --}}
       </div>
       <div class="mb-3">
         <label for="type" class="form-label">Tipologia</label>
         <input value="{{old('type')}}" type="text" class="form-control @error('title')
         is-invalid
         @enderror" id="type" name="type" placeholder="Inserire la tipologia dell'articolo">
-        <div class="invalid-feedback">
+        {{-- <div class="invalid-feedback">
           {{$message}}
-        </div>
+        </div> --}}
       </div>
       <div class="mb-3">
         <label for="description" class="form-label">Textarea</label>
